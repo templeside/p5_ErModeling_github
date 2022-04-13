@@ -1,0 +1,2 @@
+.separator |
+.import category.dat Categories
