@@ -1,7 +1,6 @@
-drop table if exists Categories
+DROP TABLE IF EXISTS Categories;
 
 CREATE TABLE Categories(
-    ItemID    INT
-    Category  varchar(256)
-    PRIMARY KEY(ITEMID, Category)
-)
+    ItemID   INT,
+    CatID    INT
+);

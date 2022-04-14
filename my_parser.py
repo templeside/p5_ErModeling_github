@@ -167,6 +167,7 @@ def parseJson(json_file):
             items_dat.write(dict_to_sentence( items_oders, items_vals))
             users_dat.write(users_str)
             bids_dat.write(bids_str)   
+
 """
 Loops through each json files provided on the command line and passes each file
 to the parser
