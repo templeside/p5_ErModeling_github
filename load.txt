@@ -1,2 +1,3 @@
 .separator |
+.read create.sql
 .import category.dat Categories
