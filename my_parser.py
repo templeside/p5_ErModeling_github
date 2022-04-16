@@ -29,6 +29,9 @@ from re import sub
 
 columnSeparator = "|"
 
+items_orders= ['ItemID', 'Name','Currently', 'Buy_Price', 'First_Bid',  'Number_of_Bids', 'Started', 'Ends','Description', 'Seller']
+users_visited= set()
+
 # Dictionary of months used for date transformation
 MONTHS = {'Jan':'01','Feb':'02','Mar':'03','Apr':'04','May':'05','Jun':'06',\
         'Jul':'07','Aug':'08','Sep':'09','Oct':'10','Nov':'11','Dec':'12'}
@@ -67,23 +70,51 @@ def transformDollar(money):
         return money
     return sub(r'[^\d.]', '', money)
 
-"from dict, return to a formatted string"
-def dict_to_sentence(order_list, val_dict):
-    string = ""
-    for order in order_list:
-        string += val_dict[order] +"|" if(val_dict[order] !=None) else "NULL" +"|"
-    result = string[:-1]+"\n"
-    return result
+
+def add_user(userID,Rating,Location,Country):
+    #userID already parsed
+    to_add = ""
+    to_add+=userID
+    to_add+=columnSeparator
+    to_add+=Rating
+    to_add+=columnSeparator
+    if Location=="NULL":
+        to_add+=Location
+    else:
+        to_add+=escape_string(Location)
+    to_add+=columnSeparator
+    if Country=="NULL":
+        to_add+=Country
+    else:
+        to_add+=escape_string(Country)
+    return to_add+"\n"
+
+def add_bid(bidID,itemID,userID,Time,Amount):
+    to_add = ""
+    to_add+=str(bidID)
+    to_add+=columnSeparator
+    to_add+=itemID
+    to_add+=columnSeparator
+    to_add+=userID
+    to_add+=columnSeparator
+    to_add+=Time
+    to_add+=columnSeparator
+    to_add+=Amount
+    return to_add+"\n"
 
 
-"from list, return to a formatted string"
-def list_to_sentence(orders):
-    string = ""
-    for order in orders:
-        string += order +"|"
-    result = string[:-1]+"\n"
 
-    return result
+def escape_string(line):
+    if line==None:
+        return "NULL"
+    line = line.strip()
+    new_line = "\""
+    for a in line:
+        new_line+=a
+        if a=="\"":
+            new_line+="\""
+    new_line+="\""
+    return new_line
 
 """
 Parses a single json file. Currently, there's a loop that iterates over each
@@ -92,81 +123,88 @@ of the necessary SQL tables for your database.
 """
 def parseJson(json_file):
     # based on the .dat files
-    items_oders= ['ItemID', 'Name','Currently', 'Buy_Price', 'First_Bid',  'Number_of_Bids', 'Started', 'Ends','Description', 'Seller']
-    users_visited= set() # for duplication checker #TODO: figure out to check duplication or adding location and country
+
 
     # opening the .dat files and json files
     with open(json_file, 'r') as f, open('category.dat', 'a') as category_dat, open('items.dat', 'a') as items_dat, open('users.dat', 'a') as users_dat, open('bids.dat', 'a') as bids_dat:
         items = loads(f.read())['Items'] # creates a Python dictionary of Items for the supplied json file
-    
+
+        bidID=0
         for item in items:
             """
             TODO: traverse the items dictionary to extract information from the
             given `json_file' and generate the necessary .dat files to generate
             the SQL tables based on your relation design
             """
-            #found requirements and non requirements, transform date and dollar format.
-            items_vals={}
 
-            #string vals or dat.write()
+            items_vals={}
             users_str=""
             category_str=""
-            bids_str=""          #String Dictionary. several bid histories
+            bids_str=""
 
         
-            ## for items.dat && users.dat && bids.dat
-            for attr in items_oders:
+            ## for items.dat
+            for attr in items_orders:
                 if(attr=='Currently' or attr=='First_Bid'):
                     items_vals[attr] = transformDollar(item[attr])
                 
-                elif(attr=="Started" or attr =="Ends"):  #when transformed to preferred date format
+                elif(attr=="Started" or attr =="Ends"):  
                     items_vals[attr] = transformDttm(item[attr])
                     
                 elif(attr=="Seller"):
                     sellerInfo= item[attr]  # sellerInfo = ["UserID", "Rating"]
-                    items_vals[attr] = sellerInfo["UserID"]
+                    good_userID = escape_string(sellerInfo["UserID"])
+                    items_vals[attr] = good_userID
                     #for sellers in users.dat
-                    if(not sellerInfo["UserID"] in users_visited):  # adding to 
-                        users_str += list_to_sentence([sellerInfo["UserID"],sellerInfo["Rating"],item["Country"],item["Location"]])                            
-                        users_visited.add(sellerInfo["UserID"])
+                    if(not good_userID in users_visited):  # adding to 
+                        users_str += add_user(good_userID,sellerInfo["Rating"],item["Country"],item["Location"])                            
+                        users_visited.add(good_userID)
                         
                 elif(attr=='Buy_Price'): 
-                    #When no bid
+                    #when it's not set
                     if(attr in item):
                         items_vals[attr] = transformDollar(item[attr])
                     else:
-                        items_vals[attr] = "NULL"
+                        items_vals[attr] = -1
+                
+                elif ((attr=="Description")|(attr=="Name")):
+                    items_vals[attr] = escape_string(item[attr])
                         
-                else: #for ItemID, Name, Description, Number of bid
+                else: #for ItemID, Number of bid
                     items_vals[attr] = item[attr]
 
             #for bid.dat, bidder history
-            if("Bids" in item and item["Bids"] !=None):
+            if(item["Bids"] !=None):
                 bids_list = item["Bids"]
                 for bid in bids_list:
                     bid_attr = bid["Bid"] #bid_attr.keys() = (['Bidder', 'Time', 'Amount'])                                
                     bidder_info = bid_attr["Bidder"]
-
-                    bids_str += list_to_sentence([item["ItemID"], bidder_info["UserID"], bid_attr["Time"],transformDollar(bid_attr["Amount"])])
+                    good_bidderID = escape_string(bidder_info["UserID"])
+                    bids_str += add_bid(bidID, item["ItemID"], good_bidderID, bid_attr["Time"],transformDollar(bid_attr["Amount"]))
             
                     #for users.dat, bidder user 
-                    bidder_id = bidder_info["UserID"]
-                    bidder_rate = bidder_info["Rating"]
-                    bidder_country = "NULL" if not"Country" in bidder_info else bidder_info["Country"]
-                    bidder_location = "NULL" if not"Location" in bidder_info else bidder_info["Location"]
-                    
-                    users_str += list_to_sentence([bidder_id, bidder_rate, bidder_country, bidder_location]) 
-                    users_visited.add(bidder_id)
+                    if "Country" not in bidder_info:
+                        bidder_info["Country"] = "NULL"
+                    if "Location" not in bidder_info:
+                        bidder_info["Location"] = "NULL"
+                    users_str += add_user(good_bidderID, bidder_info["Rating"], bidder_info["Country"], bidder_info["Location"]) 
+                    users_visited.add(good_bidderID)
+                    bidID+=1
+
             ## for category.dat
             category_attr = item["Category"]
-            for attr in category_attr:
-                category_str+= list_to_sentence([item["ItemID"],attr])
+            cat_set = set()
+            for cat in category_attr:
+                if cat in cat_set:
+                    continue
+                category_str+= item["ItemID"]+columnSeparator+escape_string(cat)+"\n"
 
             #saving to the files.
             category_dat.write(category_str)
-            items_dat.write(dict_to_sentence( items_oders, items_vals))
+            items_dat.write(columnSeparator.join(str(items_vals[key]) for key in items_orders)+"\n")
             users_dat.write(users_str)
             bids_dat.write(bids_str)   
+            
 
 """
 Loops through each json files provided on the command line and passes each file
@@ -183,5 +221,4 @@ def main(argv):
             print ("Success parsing " + f)
             
 if __name__ == '__main__':
-    # main([0,"items-0.json"])
     main(sys.argv)
