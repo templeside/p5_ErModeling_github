@@ -31,6 +31,7 @@ columnSeparator = "|"
 
 items_orders= ['ItemID', 'Name','Currently', 'Buy_Price', 'First_Bid',  'Number_of_Bids', 'Started', 'Ends','Description', 'Seller']
 users_visited= set()
+bidID=0
 
 # Dictionary of months used for date transformation
 MONTHS = {'Jan':'01','Feb':'02','Mar':'03','Apr':'04','May':'05','Jun':'06',\
@@ -122,14 +123,12 @@ item in the data set. Your job is to extend this functionality to create all
 of the necessary SQL tables for your database.
 """
 def parseJson(json_file):
-    # based on the .dat files
-
+    global bidID
 
     # opening the .dat files and json files
     with open(json_file, 'r') as f, open('category.dat', 'a') as category_dat, open('items.dat', 'a') as items_dat, open('users.dat', 'a') as users_dat, open('bids.dat', 'a') as bids_dat:
         items = loads(f.read())['Items'] # creates a Python dictionary of Items for the supplied json file
 
-        bidID=0
         for item in items:
             """
             TODO: traverse the items dictionary to extract information from the
