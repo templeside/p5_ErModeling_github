@@ -1,0 +1,1 @@
+SELECT COUNT(DISTINCT Seller) FROM Items AS I, Users AS U WHERE I.Seller=U.UserID AND U.Rating>1000;

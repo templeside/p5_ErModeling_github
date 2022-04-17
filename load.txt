@@ -1,3 +1,10 @@
 .separator |
 .read create.sql
+.import users.dat Users
+update Users set Country=NULL where Country="NULL";
+update Users set Location=NULL where Location="NULL";
+.import items.dat Items
+update Items set Buy_Price=NULL where Buy_Price=-1;
 .import category.dat Categories
+.import bids.dat Bids
+

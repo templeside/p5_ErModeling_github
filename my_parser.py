@@ -29,7 +29,7 @@ from re import sub
 
 columnSeparator = "|"
 
-items_orders= ['ItemID', 'Name','Currently', 'Buy_Price', 'First_Bid',  'Number_of_Bids', 'Started', 'Ends','Description', 'Seller']
+items_orders= ['ItemID', 'Name','Currently', 'Buy_Price', 'First_Bid', 'Number_of_Bids', 'Started', 'Ends', 'Seller', 'Description']
 users_visited= set()
 bidID=0
 
@@ -79,12 +79,12 @@ def add_user(userID,Rating,Location,Country):
     to_add+=columnSeparator
     to_add+=Rating
     to_add+=columnSeparator
-    if Location=="NULL":
+    if Location=="\"NULL\"":
         to_add+=Location
     else:
         to_add+=escape_string(Location)
     to_add+=columnSeparator
-    if Country=="NULL":
+    if Country=="\"NULL\"":
         to_add+=Country
     else:
         to_add+=escape_string(Country)
@@ -107,7 +107,7 @@ def add_bid(bidID,itemID,userID,Time,Amount):
 
 def escape_string(line):
     if line==None:
-        return "NULL"
+        return "\"NULL\""
     line = line.strip()
     new_line = "\""
     for a in line:
@@ -155,7 +155,7 @@ def parseJson(json_file):
                     good_userID = escape_string(sellerInfo["UserID"])
                     items_vals[attr] = good_userID
                     #for sellers in users.dat
-                    if(not good_userID in users_visited):  # adding to 
+                    if good_userID not in users_visited:  # adding to 
                         users_str += add_user(good_userID,sellerInfo["Rating"],item["Country"],item["Location"])                            
                         users_visited.add(good_userID)
                         
@@ -183,11 +183,12 @@ def parseJson(json_file):
             
                     #for users.dat, bidder user 
                     if "Country" not in bidder_info:
-                        bidder_info["Country"] = "NULL"
+                        bidder_info["Country"] = "\"NULL\""
                     if "Location" not in bidder_info:
-                        bidder_info["Location"] = "NULL"
-                    users_str += add_user(good_bidderID, bidder_info["Rating"], bidder_info["Country"], bidder_info["Location"]) 
-                    users_visited.add(good_bidderID)
+                        bidder_info["Location"] = "\"NULL\""
+                    if good_bidderID not in users_visited:
+                        users_str += add_user(good_bidderID, bidder_info["Rating"], bidder_info["Country"], bidder_info["Location"]) 
+                        users_visited.add(good_bidderID)
                     bidID+=1
 
             ## for category.dat
@@ -197,6 +198,7 @@ def parseJson(json_file):
                 if cat in cat_set:
                     continue
                 category_str+= item["ItemID"]+columnSeparator+escape_string(cat)+"\n"
+                cat_set.add(cat)
 
             #saving to the files.
             category_dat.write(category_str)

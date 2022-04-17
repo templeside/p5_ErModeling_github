@@ -1,0 +1,2 @@
+WITH temp AS (SELECT ItemID FROM Categories GROUP BY ItemID HAVING COUNT(CategoryName)=4)
+SELECT COUNT(*) FROM temp;
