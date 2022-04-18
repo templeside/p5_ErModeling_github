@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-04-18T00:17:22.464Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36" etag="yezg7X2d8smdiEmrQ1CU" version="17.4.5" type="github">
+<mxfile host="app.diagrams.net" modified="2022-04-18T00:19:02.695Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36" etag="gAjQooFvdRo4h5FsWrXS" version="17.4.5" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="1773" dy="2951" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -393,7 +393,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="Ptw93wEikCLMhVyK-1dr-41" value="&lt;div&gt;Items(ItemID VARCHAR(256), Name VARCHAR(256), Currently MONEY, Buy_Price MONEY, First_Bid MONEY, Number_of_Bids INT, Started DateTime,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; Ends DateTime, Seller VARCHAR(256), Description VARCHAR(256), Primary Key (ItemID), Foreign Key (Seller) references Users (UserID));&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="-230" y="-540" width="890" height="30" as="geometry" />
+          <mxGeometry x="-230" y="-540" width="840" height="30" as="geometry" />
         </mxCell>
         <mxCell id="Ptw93wEikCLMhVyK-1dr-84" value="" style="shape=table;startSize=0;container=1;collapsible=0;childLayout=tableLayout;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry y="-440" width="280" height="120" as="geometry" />
@@ -567,45 +567,45 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="Ptw93wEikCLMhVyK-1dr-167" value="Bids(BidID INT, ItemID INT, Bidder VARCHAR(256), Time DateTime, Amount MONEY, Primary key (BidID), Foreign key (Bidder) references Users (UserID), Foreign key (ItemID) references Items (ItemID));" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="-170" y="-130" width="710" height="30" as="geometry" />
+          <mxGeometry x="-170" y="-120" width="710" height="30" as="geometry" />
         </mxCell>
         <mxCell id="Ptw93wEikCLMhVyK-1dr-168" value="" style="shape=table;startSize=0;container=1;collapsible=0;childLayout=tableLayout;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="-5.684341886080802e-14" y="-60" width="280" height="60" as="geometry" />
+          <mxGeometry y="-60" width="310" height="60" as="geometry" />
         </mxCell>
         <mxCell id="Ptw93wEikCLMhVyK-1dr-169" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="Ptw93wEikCLMhVyK-1dr-168" vertex="1">
-          <mxGeometry width="280" height="30" as="geometry" />
+          <mxGeometry width="310" height="30" as="geometry" />
         </mxCell>
         <mxCell id="Ptw93wEikCLMhVyK-1dr-170" value="ItemID" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" parent="Ptw93wEikCLMhVyK-1dr-169" vertex="1">
-          <mxGeometry width="93" height="30" as="geometry">
-            <mxRectangle width="93" height="30" as="alternateBounds" />
+          <mxGeometry width="103" height="30" as="geometry">
+            <mxRectangle width="103" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Ptw93wEikCLMhVyK-1dr-171" value="part of PK" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" parent="Ptw93wEikCLMhVyK-1dr-169" vertex="1">
-          <mxGeometry x="93" width="94" height="30" as="geometry">
-            <mxRectangle width="94" height="30" as="alternateBounds" />
+        <mxCell id="Ptw93wEikCLMhVyK-1dr-171" value="part of PK, is a FK" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" parent="Ptw93wEikCLMhVyK-1dr-169" vertex="1">
+          <mxGeometry x="103" width="104" height="30" as="geometry">
+            <mxRectangle width="104" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Ptw93wEikCLMhVyK-1dr-172" value="INT" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" parent="Ptw93wEikCLMhVyK-1dr-169" vertex="1">
-          <mxGeometry x="187" width="93" height="30" as="geometry">
-            <mxRectangle width="93" height="30" as="alternateBounds" />
+          <mxGeometry x="207" width="103" height="30" as="geometry">
+            <mxRectangle width="103" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Ptw93wEikCLMhVyK-1dr-173" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="Ptw93wEikCLMhVyK-1dr-168" vertex="1">
-          <mxGeometry y="30" width="280" height="30" as="geometry" />
+          <mxGeometry y="30" width="310" height="30" as="geometry" />
         </mxCell>
         <mxCell id="Ptw93wEikCLMhVyK-1dr-174" value="Category" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" parent="Ptw93wEikCLMhVyK-1dr-173" vertex="1">
-          <mxGeometry width="93" height="30" as="geometry">
-            <mxRectangle width="93" height="30" as="alternateBounds" />
+          <mxGeometry width="103" height="30" as="geometry">
+            <mxRectangle width="103" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Ptw93wEikCLMhVyK-1dr-175" value="&lt;span&gt;part of PK, FK&lt;/span&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" parent="Ptw93wEikCLMhVyK-1dr-173" vertex="1">
-          <mxGeometry x="93" width="94" height="30" as="geometry">
-            <mxRectangle width="94" height="30" as="alternateBounds" />
+        <mxCell id="Ptw93wEikCLMhVyK-1dr-175" value="&lt;span&gt;part of PK&lt;/span&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" parent="Ptw93wEikCLMhVyK-1dr-173" vertex="1">
+          <mxGeometry x="103" width="104" height="30" as="geometry">
+            <mxRectangle width="104" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Ptw93wEikCLMhVyK-1dr-176" value="&lt;div style=&quot;font-family: &amp;#34;consolas&amp;#34; , &amp;#34;courier new&amp;#34; , monospace ; font-size: 14px ; line-height: 19px&quot;&gt;&lt;span style=&quot;font-family: &amp;#34;helvetica&amp;#34; ; font-size: 12px&quot;&gt;VARCHAR(256)&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" parent="Ptw93wEikCLMhVyK-1dr-173" vertex="1">
-          <mxGeometry x="187" width="93" height="30" as="geometry">
-            <mxRectangle width="93" height="30" as="alternateBounds" />
+          <mxGeometry x="207" width="103" height="30" as="geometry">
+            <mxRectangle width="103" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="Ptw93wEikCLMhVyK-1dr-209" value="Categories(ItemID INT, CategoryName&amp;nbsp; VARCHAR(256), Primary key (ItemID, CategoryName), Foreign key (ItemID) references Items (ItemID));" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
