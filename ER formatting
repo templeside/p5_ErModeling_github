@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-04-18T00:27:11.295Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36" etag="KcLkyxjMfpNkjQGNRXkL" version="17.4.4" type="github">
+<mxfile host="app.diagrams.net" modified="2022-04-18T00:28:18.471Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36" etag="VXXUPmNUR06piz5fnASQ" version="17.4.4" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="1926" dy="3019" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -426,7 +426,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="Ptw93wEikCLMhVyK-1dr-209" value="Categories(ItemID INT, CategoryName&amp;nbsp; VARCHAR(256), Primary key (ItemID, CategoryName), Foreign key (ItemID) references Items (ItemID));" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="400" y="-380" width="930" height="30" as="geometry" />
+          <mxGeometry x="320" y="-380" width="930" height="30" as="geometry" />
         </mxCell>
         <mxCell id="8Vt0UMAs1UZm53MZ7CVT-0" value="" style="shape=table;startSize=0;container=1;collapsible=0;childLayout=tableLayout;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="-80" y="-840" width="280" height="300" as="geometry" />
