@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-04-18T00:39:35.543Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36" etag="Itwuwppjl8KwOI6wIBf4" version="17.4.4" type="github">
+<mxfile host="app.diagrams.net" modified="2022-04-18T00:46:18.200Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4896.88 Safari/537.36" etag="1vkKUjOT6sRfhsA_8dUB" version="17.4.4" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="2015" dy="3448" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="967" dy="2799" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -211,8 +211,8 @@
         <mxCell id="upb9rBb6jgJy1Q0YJifM-0" value="BidID" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;rounded=0;fontStyle=4;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="718.23" y="-2104.5" width="80.91" height="39.5" as="geometry" />
         </mxCell>
-        <mxCell id="Ptw93wEikCLMhVyK-1dr-41" value="&lt;div&gt;Items(ItemID VARCHAR(256), Name VARCHAR(256), Currently MONEY, Buy_Price MONEY, First_Bid MONEY, Number_of_Bids INT, Started DateTime,&lt;/div&gt;&lt;div&gt;&amp;nbsp; &amp;nbsp; Ends DateTime, Seller VARCHAR(256), Description VARCHAR(256), Primary Key (ItemID), Foreign Key (Seller) references Users (UserID));&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="10.86" y="-780" width="840" height="30" as="geometry" />
+        <mxCell id="Ptw93wEikCLMhVyK-1dr-41" value="&lt;div&gt;&lt;b&gt;Items&lt;/b&gt;(&lt;u&gt;ItemID&lt;/u&gt; VARCHAR(256), Name VARCHAR(256), Currently MONEY, Buy_Price MONEY, First_Bid MONEY, Number_of_Bids INT, Started DateTime,&amp;nbsp;&lt;span&gt;Ends DateTime, Seller VARCHAR(256), Description VARCHAR(256), Primary Key (ItemID), Foreign Key (Seller) references Users (UserID));&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="20.43" y="-780" width="819.14" height="30" as="geometry" />
         </mxCell>
         <mxCell id="Ptw93wEikCLMhVyK-1dr-84" value="" style="shape=table;startSize=0;container=1;collapsible=0;childLayout=tableLayout;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="80" y="-720" width="280" height="120" as="geometry" />
@@ -289,8 +289,8 @@
             <mxRectangle width="93" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Ptw93wEikCLMhVyK-1dr-125" value="Users(UserID VARCHAR(256), Rating INT, Country VARCHAR(256), Location VARCHAR(256),Primary Key (UserID));" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="40" y="-600" width="670" height="30" as="geometry" />
+        <mxCell id="Ptw93wEikCLMhVyK-1dr-125" value="&lt;b&gt;Users&lt;/b&gt;(&lt;u&gt;UserID&lt;/u&gt; VARCHAR(256), Rating INT, Country VARCHAR(256), Location VARCHAR(256),Primary Key (UserID));" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="20.43" y="-600" width="670" height="30" as="geometry" />
         </mxCell>
         <mxCell id="Ptw93wEikCLMhVyK-1dr-126" value="" style="shape=table;startSize=0;container=1;collapsible=0;childLayout=tableLayout;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="80" y="-560" width="280" height="150" as="geometry" />
@@ -385,8 +385,8 @@
             <mxRectangle width="93" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Ptw93wEikCLMhVyK-1dr-167" value="Bids(BidID INT, ItemID INT, Bidder VARCHAR(256), Time DateTime, Amount MONEY, Primary key (BidID), Foreign key (Bidder) references Users (UserID), Foreign key (ItemID) references Items (ItemID));" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="40" y="-410" width="710" height="30" as="geometry" />
+        <mxCell id="Ptw93wEikCLMhVyK-1dr-167" value="&lt;b&gt;Bids&lt;/b&gt;(&lt;u&gt;BidID&lt;/u&gt; INT, ItemID INT, Bidder VARCHAR(256), Time DateTime, Amount MONEY, Primary key (BidID), Foreign key (Bidder) references Users (UserID), Foreign key (ItemID) references Items (ItemID));" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="20.43" y="-410" width="710" height="30" as="geometry" />
         </mxCell>
         <mxCell id="Ptw93wEikCLMhVyK-1dr-168" value="" style="shape=table;startSize=0;container=1;collapsible=0;childLayout=tableLayout;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="80" y="-360" width="310" height="60" as="geometry" />
@@ -394,7 +394,7 @@
         <mxCell id="Ptw93wEikCLMhVyK-1dr-169" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="Ptw93wEikCLMhVyK-1dr-168" vertex="1">
           <mxGeometry width="310" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Ptw93wEikCLMhVyK-1dr-170" value="ItemID" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" parent="Ptw93wEikCLMhVyK-1dr-169" vertex="1">
+        <mxCell id="Ptw93wEikCLMhVyK-1dr-170" value="&lt;u&gt;ItemID&lt;/u&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" parent="Ptw93wEikCLMhVyK-1dr-169" vertex="1">
           <mxGeometry width="103" height="30" as="geometry">
             <mxRectangle width="103" height="30" as="alternateBounds" />
           </mxGeometry>
@@ -412,7 +412,7 @@
         <mxCell id="Ptw93wEikCLMhVyK-1dr-173" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="Ptw93wEikCLMhVyK-1dr-168" vertex="1">
           <mxGeometry y="30" width="310" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Ptw93wEikCLMhVyK-1dr-174" value="CategoryName" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" parent="Ptw93wEikCLMhVyK-1dr-173" vertex="1">
+        <mxCell id="Ptw93wEikCLMhVyK-1dr-174" value="&lt;u&gt;CategoryName&lt;/u&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;" parent="Ptw93wEikCLMhVyK-1dr-173" vertex="1">
           <mxGeometry width="103" height="30" as="geometry">
             <mxRectangle width="103" height="30" as="alternateBounds" />
           </mxGeometry>
@@ -427,8 +427,8 @@
             <mxRectangle width="103" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="Ptw93wEikCLMhVyK-1dr-209" value="Categories(ItemID INT, CategoryName&amp;nbsp; VARCHAR(256), Primary key (ItemID, CategoryName), Foreign key (ItemID) references Items (ItemID));" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="40" y="-300" width="930" height="30" as="geometry" />
+        <mxCell id="Ptw93wEikCLMhVyK-1dr-209" value="&lt;b&gt;Categories&lt;/b&gt;(&lt;u&gt;ItemID&lt;/u&gt; INT, &lt;u&gt;CategoryName&lt;/u&gt;&amp;nbsp; VARCHAR(256), Primary key (ItemID, CategoryName), Foreign key (ItemID) references Items (ItemID));" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="20.43" y="-300" width="780" height="30" as="geometry" />
         </mxCell>
         <mxCell id="8Vt0UMAs1UZm53MZ7CVT-0" value="" style="shape=table;startSize=0;container=1;collapsible=0;childLayout=tableLayout;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="80" y="-1080" width="280" height="300" as="geometry" />
