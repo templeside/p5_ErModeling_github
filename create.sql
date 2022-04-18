@@ -4,32 +4,32 @@ DROP TABLE IF EXISTS Users;
 DROP TABLE IF EXISTS Bids;
 
 CREATE TABLE Users(
-    UserID varchar(256),
+    UserID VARCHAR(256),
     Rating INT,
-    Country varchar(256),
-    Location varchar(256),
-    Primary key (UserID)
+    Country VARCHAR(256),
+    Location VARCHAR(256),
+    Primary Key (UserID)
 );
 
 CREATE TABLE Items(
-    ItemID varchar(256),
-    Name varchar(256),
-    Currently money,
-    Buy_Price money,
-    First_Bid money,
+    ItemID VARCHAR(256),
+    Name VARCHAR(256),
+    Currently MONEY,
+    Buy_Price MONEY,
+    First_Bid MONEY,
     Number_of_Bids INT,
-    Started datetime,
-    Ends datetime,
-    Seller varchar(256),
-    Description varchar(256),
-    Primary key (ItemID),
-    Foreign key (Seller) references Users (UserID)
+    Started DateTime,
+    Ends DateTime,
+    Seller VARCHAR(256),
+    Description VARCHAR(256),
+    Primary Key (ItemID),
+    Foreign Key (Seller) references Users (UserID)
 );
 
 
 CREATE TABLE Categories(
-    ItemID   INT,
-    CategoryName  varchar(256),
+    ItemID INT,
+    CategoryName  VARCHAR(256),
     Primary key (ItemID, CategoryName),
     Foreign key (ItemID) references Items (ItemID)
 );
@@ -38,10 +38,10 @@ CREATE TABLE Categories(
 
 CREATE TABLE Bids(
     BidID INT,
-    ItemID   INT,
-    Bidder  varchar(256),
-    Time datetime,
-    Amount money,
+    ItemID INT,
+    Bidder VARCHAR(256),
+    Time DateTime,
+    Amount MONEY,
     Primary key (BidID),
     Foreign key (Bidder) references Users (UserID),
     Foreign key (ItemID) references Items (ItemID)
