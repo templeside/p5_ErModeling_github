@@ -12,7 +12,7 @@ CREATE TABLE Users(
 );
 
 CREATE TABLE Items(
-    ItemID VARCHAR(256),
+    ItemID INT,
     Name VARCHAR(256),
     Currently MONEY,
     Buy_Price MONEY,
